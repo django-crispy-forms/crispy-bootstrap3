@@ -269,50 +269,6 @@ def test_without_helper(settings):
     assert "action" not in html
 
 
-def test_template_pack_override_compact(settings):
-    current_pack = settings.CRISPY_TEMPLATE_PACK
-    if current_pack == "bootstrap4":
-        override_pack = "bootstrap3"
-    else:
-        override_pack = "bootstrap4"
-
-    # {% crispy form 'template_pack_name' %}
-    template = Template(
-        """
-        {%% load crispy_forms_tags %%}
-        {%% crispy form "%s" %%}
-    """
-        % override_pack
-    )
-    c = Context({"form": SampleForm()})
-    html = template.render(c)
-
-    if current_pack == "bootstrap4":
-        assert "controls" in html  # controls is a bootstrap3 only class
-    else:
-        assert "controls" not in html
-
-
-def test_template_pack_override_verbose(settings):
-    current_pack = settings.CRISPY_TEMPLATE_PACK
-    if current_pack == "bootstrap4":
-        override_pack = "bootstrap3"
-    else:
-        override_pack = "bootstrap4"
-
-    # {% crispy form helper 'template_pack_name' %}
-    template = Template(
-        """
-        {%% load crispy_forms_tags %%}
-        {%% crispy form form_helper "%s" %%}
-    """
-        % override_pack
-    )
-    c = Context({"form": SampleForm(), "form_helper": FormHelper()})
-    html = template.render(c)
-    assert "controls" not in html
-
-
 def test_template_pack_override_wrong():
     with pytest.raises(TemplateSyntaxError):
         Template(
@@ -694,14 +650,6 @@ def test_label_class_and_field_class():
     )
     assert dom.count(snippet)
     assert html.count("col-sm-8") == 7
-
-
-def test_template_pack():
-    form = SampleForm()
-    form.helper = FormHelper()
-    form.helper.template_pack = "bootstrap4"
-    html = render_crispy_form(form)
-    assert "controls" not in html  # controls is bootstrap3 only
 
 
 def test_passthrough_context():
