@@ -1,0 +1,48 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "crispy-bootstrap3"
+description = "Bootstrap3 template pack for django-crispy-forms"
+authors = [ { name = "David Smith" } ]
+license = {text = "MIT"}
+requires-python = ">=3.7"
+readme = "README.md"
+dependencies = [
+    "django-crispy-forms>=1.14.0",
+    "django>=3.2",
+]
+classifiers=[
+    "Environment :: Web Environment",
+    "Framework :: Django",
+    "Framework :: Django :: 3.2",
+    "Framework :: Django :: 4.0",
+    "Framework :: Django :: 4.1",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Topic :: Internet :: WWW/HTTP",
+    "Topic :: Internet :: WWW/HTTP :: Dynamic Content",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+dynamic = ['version']
+
+[project.urls]
+"Homepage" = "https://github.com/django-crispy-forms/crispy-bootstrap3"
+"Issues" = "https://github.com/django-crispy-forms/crispy-bootstrap3/issues"
+"CI" = "https://github.com/django-crispy-forms/crispy-bootstrap3/actions"
+"Changelog" = "https://github.com/django-crispy-forms/crispy-bootstrap3/releases"
+
+[tool.setuptools.dynamic]
+version = {attr = "crispy_bootstrap3.__version__"}
+
+[tool.isort]
+profile = "black"
+
+[tool.pytest.ini_options]
+DJANGO_SETTINGS_MODULE = "tests.test_settings"
