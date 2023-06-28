@@ -10,3 +10,4 @@ venv
 .vscode
 *python-version
 .tox
+.idea/

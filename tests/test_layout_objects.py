@@ -192,7 +192,7 @@ class TestBootstrapLayoutObjects:
             PrependedText("password2", "$", css_class="input-sm"),
         )
         assert parse_form(test_form) == parse_expected(
-            "bootstrap3/test_layout_objects/test_prepended_appended_text.html"
+            "bootstrap3to5/test_layout_objects/test_prepended_appended_text.html"
         )
 
     def test_inline_radios(self):
@@ -366,7 +366,7 @@ class TestBootstrapLayoutObjects:
             )
         )
         assert parse_form(form) == parse_expected(
-            "bootstrap3/test_layout_objects/test_field_with_buttons.html"
+            "bootstrap3to5/test_layout_objects/test_field_with_buttons.html"
         )
 
     def test_hidden_fields(self):
@@ -434,7 +434,7 @@ class TestBootstrapLayoutObjects:
         form.helper.layout = Layout(Modal(Field("first_name")))
 
         assert parse_form(form) == parse_expected(
-            "bootstrap3/test_layout_objects/bootstrap_modal_no_kwargs.html"
+            "bootstrap3to5/test_layout_objects/bootstrap_modal_no_kwargs.html"
         )
 
     def test_modal_with_kwargs(self):
@@ -452,7 +452,7 @@ class TestBootstrapLayoutObjects:
         )
 
         assert parse_form(form) == parse_expected(
-            "bootstrap3/test_layout_objects/bootstrap_modal_with_kwargs.html"
+            "bootstrap3to5/test_layout_objects/bootstrap_modal_with_kwargs.html"
         )
 
     @pytest.mark.skipif(
@@ -474,5 +474,5 @@ class TestBootstrapLayoutObjects:
         )
 
         assert parse_form(form) == parse_expected(
-            "bootstrap3/test_layout_objects/test_FormActions.html"
+            "bootstrap3to5/test_layout_objects/test_FormActions.html"
         )

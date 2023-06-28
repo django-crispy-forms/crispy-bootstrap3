@@ -136,12 +136,12 @@ def test_form_show_errors_non_field_errors():
         # Removed "for = ..." from MultiWidget's <label>.
         # https://github.com/django/django/commit/c6c6cd3c5ad9c36795bb120e521590424f034ae4
         expected = parse_expected(
-            "bootstrap3/test_form_helper/"
+            "bootstrap3to5/test_form_helper/"
             "test_form_show_errors_non_field_errors_true_lte40.html"
         )
     else:
         expected = parse_expected(
-            "bootstrap3/test_form_helper/"
+            "bootstrap3to5/test_form_helper/"
             "test_form_show_errors_non_field_errors_true.html"
         )
     assert parse_html(template.render(c)) == expected
@@ -152,12 +152,12 @@ def test_form_show_errors_non_field_errors():
     # Ensure errors were not rendered
     if django.VERSION < (4, 1):
         expected = parse_expected(
-            "bootstrap3/test_form_helper/"
+            "bootstrap3to5/test_form_helper/"
             "test_form_show_errors_non_field_errors_false_lte40.html"
         )
     else:
         expected = parse_expected(
-            "bootstrap3/test_form_helper/"
+            "bootstrap3to5/test_form_helper/"
             "test_form_show_errors_non_field_errors_false.html"
         )
     assert parse_html(template.render(c)) == expected
@@ -184,7 +184,7 @@ def test_html5_required():
 def test_media_is_included_by_default_with_bootstrap3():
     form = SampleFormWithMedia()
     form.helper = FormHelper()
-    form.helper.template_pack = "bootstrap3"
+    form.helper.template_pack = "bootstrap3to5"
     html = render_crispy_form(form)
     assert "test.css" in html
     assert "test.js" in html
@@ -193,7 +193,7 @@ def test_media_is_included_by_default_with_bootstrap3():
 def test_media_removed_when_include_media_is_false_with_bootstrap3():
     form = SampleFormWithMedia()
     form.helper = FormHelper()
-    form.helper.template_pack = "bootstrap3"
+    form.helper.template_pack = "bootstrap3to5"
     form.helper.include_media = False
     html = render_crispy_form(form)
     assert "test.css" not in html
@@ -529,12 +529,12 @@ def test_bootstrap_form_show_errors_bs3():
 
     form.helper.form_show_errors = True
     assert parse_form(form) == parse_expected(
-        "bootstrap3/test_form_helper/bootstrap_form_show_errors_bs3_true.html"
+        "bootstrap3to5/test_form_helper/bootstrap_form_show_errors_bs3_true.html"
     )
 
     form.helper.form_show_errors = False
     assert parse_form(form) == parse_expected(
-        "bootstrap3/test_form_helper/bootstrap_form_show_errors_bs3_false.html"
+        "bootstrap3to5/test_form_helper/bootstrap_form_show_errors_bs3_false.html"
     )
 
 
@@ -671,7 +671,7 @@ def test_passthrough_context():
 def test_bootstrap3_does_add_form_control_class_to_non_multivaluefield():
     form = SampleForm()
     form.helper = FormHelper()
-    form.helper.template_pack = "bootstrap3"
+    form.helper.template_pack = "bootstrap3to5"
     html = render_crispy_form(form)
     assert "form-control" in html
 
@@ -679,6 +679,6 @@ def test_bootstrap3_does_add_form_control_class_to_non_multivaluefield():
 def test_bootstrap3_does_not_add_form_control_class_to_multivaluefield():
     form = SampleFormWithMultiValueField()
     form.helper = FormHelper()
-    form.helper.template_pack = "bootstrap3"
+    form.helper.template_pack = "bootstrap3to5"
     html = render_crispy_form(form)
     assert "form-control" not in html

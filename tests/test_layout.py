@@ -463,7 +463,7 @@ def test_layout_composition(settings):
 
     # Bootstrap 4 does not contain a multifield template
     assert parse_html(html) == parse_expected(
-        "bootstrap3/test_layout/test_layout_composition.html"
+        "bootstrap3to5/test_layout/test_layout_composition.html"
     )
 
 
@@ -517,7 +517,7 @@ def test_second_layout_multifield_column_buttonholder_submit_div(settings):
 
     # Bootstrap 4 does not contain a multifield template
     assert parse_html(html) == parse_expected(
-        "bootstrap3/test_layout/"
+        "bootstrap3to5/test_layout/"
         "test_second_layout_multifield_column_buttonholder_submit_div.html"
     )
 
@@ -566,7 +566,7 @@ def test_multiple_checkboxes_bs3():
         "numeric_multiple_checkboxes",
     )
     assert parse_form(form) == parse_expected(
-        "bootstrap3/test_layout/test_multiple_checkboxes.html"
+        "bootstrap3to5/test_layout/test_multiple_checkboxes.html"
     )
 
 
@@ -577,14 +577,14 @@ def test_radio_bs3():
     form.helper.layout = Layout(
         "radio_select",
     )
-    assert parse_form(form) == parse_expected("bootstrap3/test_layout/test_radio.html")
+    assert parse_form(form) == parse_expected("bootstrap3to5/test_layout/test_radio.html")
 
 
 def test_form_inline():
     form = SampleForm()
     form.helper = FormHelper()
     form.helper.form_class = "form-inline"
-    form.helper.field_template = "bootstrap3/layout/inline_field.html"
+    form.helper.field_template = "bootstrap3to5/layout/inline_field.html"
     form.helper.layout = Layout(
         "email",
         "password1",
@@ -626,7 +626,7 @@ def test_multiple_fields():
         Field("first_name", "last_name", css_class="form-control-lg")
     )
     assert parse_form(form) == parse_expected(
-        "bootstrap3/test_layout/test_multiple_fields.html"
+        "bootstrap3to5/test_layout/test_multiple_fields.html"
     )
 
 
@@ -648,5 +648,5 @@ def test_radio_attrs():
     form = TestForm()
     form.helper = FormHelper()
     assert parse_form(form) == parse_expected(
-        "bootstrap3/test_layout/test_radio_attrs.html"
+        "bootstrap3to5/test_layout/test_radio_attrs.html"
     )

@@ -24,7 +24,7 @@ CRISPY_CLASS_CONVERTERS = {"textinput": "textinput textInput inputtext"}
 SECRET_KEY = "secretkey"
 SITE_ROOT = os.path.dirname(os.path.abspath(__file__))
 USE_TZ = True
-CRISPY_TEMPLATE_PACK = "bootstrap3"
+CRISPY_TEMPLATE_PACK = "bootstrap3to5"
 
 TEMPLATE_DEBUG = True
 TEMPLATE_DIRS = (os.path.join(BASE_DIR, "templates"),)

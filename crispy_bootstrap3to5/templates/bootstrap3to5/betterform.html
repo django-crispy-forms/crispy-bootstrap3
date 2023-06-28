@@ -12,7 +12,7 @@
             {% if field.is_hidden %}
                 {{ field }}
             {% else %}
-                {% include "bootstrap3/field.html" %}
+                {% include "bootstrap3to5/field.html" %}
             {% endif %}
         {% endfor %}
     {% if not forloop.last or not fieldset_open %}
