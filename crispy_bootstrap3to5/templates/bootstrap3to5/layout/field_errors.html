@@ -1,5 +1,1 @@
-{% if form_show_errors and field.errors %}
-    {% for error in field.errors %}
-        <span id="error_{{ forloop.counter }}_{{ field.auto_id }}" class="help-block"><strong>{{ error }}</strong></span>
-    {% endfor %}
-{% endif %}
+{% if use_bootstrap5 %}{% include 'bootstrap3to5/layout/bootstrap5/field_errors.html' %}{% else %}{% include 'bootstrap3to5/layout/bootstrap3/field_errors.html' %}{% endif %}
