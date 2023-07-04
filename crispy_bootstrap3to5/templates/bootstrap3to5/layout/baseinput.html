@@ -1,9 +1,1 @@
-<input type="{{ input.input_type }}"
-    name="{% if input.name|wordcount > 1 %}{{ input.name|slugify }}{% else %}{{ input.name }}{% endif %}"
-    value="{{ input.value }}"
-    {% if input.input_type != "hidden" %}
-        class="{{ input.field_classes }}"
-        id="{{ input.id }}"
-    {% endif %}
-    {{ input.flat_attrs }}
-    />
+{% if use_bootstrap5 %}{% include 'bootstrap3to5/layout/bootstrap5/baseinput.html' %}{% else %}{% include 'bootstrap3to5/layout/bootstrap3/baseinput.html' %}{% endif %}
