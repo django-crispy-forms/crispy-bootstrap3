@@ -1,8 +1,4 @@
 include LICENSE
 include MANIFEST.in
+include README.md
 recursive-include crispy_bootstrap3to5/templates *
-include *.md
-include tox.ini
-recursive-include requirements *.txt
-recursive-include tests *.html
-recursive-include tests *.py
