@@ -1,9 +1,1 @@
-{% if formset.non_form_errors %}
-    <div class="alert alert-block alert-danger">
-        {% if formset_error_title %}<h4 class="alert-heading">{{ formset_error_title }}</h4>{% endif %}
-        <ul>
-            {{ formset.non_form_errors|unordered_list }}
-        </ul>
-    </div>
-{% endif %}
-
+{% if use_bootstrap5 %}{% include 'bootstrap3to5/bootstrap5/errors_formset.html' %}{% else %}{% include 'bootstrap3to5/bootstrap3/errors_formset.html' %}{% endif %}
