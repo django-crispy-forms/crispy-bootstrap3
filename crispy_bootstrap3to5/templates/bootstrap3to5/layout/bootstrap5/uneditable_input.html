@@ -5,6 +5,6 @@
     <label class="{% if 'form-horizontal' in form_class %}col-form-label {% endif %}{{ label_class }}{% if field.field.required %} requiredField{% endif %}">{{ field.label }}{% if field.field.required %}<span class="asteriskField">*</span>{% endif %}</label>
     <div class="{{ field_class }}">
         {% crispy_field field 'disabled' 'disabled' %}
-        {% include 'bootstrap5/layout/bootstrap5/help_text.html' %}
+        {% include 'bootstrap3to5/layout/bootstrap5/help_text.html' %}
     </div>
 </div>

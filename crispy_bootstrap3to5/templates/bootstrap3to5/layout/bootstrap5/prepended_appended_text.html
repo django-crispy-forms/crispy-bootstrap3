@@ -36,13 +36,13 @@
                     <span class="input-group-text">{{ crispy_appended_text }}</span>
                 {% endif %}
                 {% if error_text_inline %}
-                    {% include 'bootstrap5/layout/bootstrap5/field_errors.html' %}
+                    {% include 'bootstrap3to5/layout/bootstrap5/field_errors.html' %}
                 {% else %}
-                    {% include 'bootstrap5/layout/bootstrap5/field_errors_block.html' %}
+                    {% include 'bootstrap3to5/layout/bootstrap5/field_errors_block.html' %}
                 {% endif %}
             </div>
         {% if not help_text_inline %}
-            {% include 'bootstrap5/layout/bootstrap5/help_text.html' %}
+            {% include 'bootstrap3to5/layout/bootstrap5/help_text.html' %}
         {% endif %}
         </div>
 

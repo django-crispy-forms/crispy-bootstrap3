@@ -19,6 +19,6 @@
         {% for error in field.errors %}
             <p id="error_{{ forloop.counter }}_{{ field.auto_id }}" class="text-danger mb-0"><small><strong>{{ error }}</strong></small></p>
         {% endfor %}
-        {% include 'bootstrap5/layout/bootstrap5/help_text.html' %}
+        {% include 'bootstrap3to5/layout/bootstrap5/help_text.html' %}
     </div>
 </div>
