@@ -1,6 +1,6 @@
 include LICENSE
 include MANIFEST.in
-recursive-include crispy_bootstrap3/templates *
+recursive-include crispy_bootstrap3to5/templates *
 include *.md
 include tox.ini
 recursive-include requirements *.txt
