@@ -1,3 +1,1 @@
-<div {% if div.css_id %}id="{{ div.css_id }}"{% endif %} class="row {{ div.css_class|default:'' }}" {{ div.flat_attrs }}>
-        {{ fields }}
-</div>
+{% if use_bootstrap5 %}{% include 'bootstrap3to5/layout/bootstrap5/row.html' %}{% else %}{% include 'bootstrap3to5/layout/bootstrap3/row.html' %}{% endif %}
