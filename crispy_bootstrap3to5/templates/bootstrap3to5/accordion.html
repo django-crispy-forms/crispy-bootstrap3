@@ -1,3 +1,1 @@
-<div class="panel-group" id="{{ accordion.css_id }}">
-    {{ content }}
-</div>
+{% if use_bootstrap5 %}{% include 'bootstrap3to5/bootstrap5/accordion.html' %}{% else %}{% include 'bootstrap3to5/bootstrap3/accordion.html' %}{% endif %}
