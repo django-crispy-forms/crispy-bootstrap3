@@ -19,7 +19,7 @@ for your project:
         ...
     )
 
-    CRISPY_ALLOWED_TEMPLATE_PACKS = "crispy_bootstrap3to5"
+    CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap3to5"
 
-    CRISPY_TEMPLATE_PACK = "crispy_bootstrap3to5"
+    CRISPY_TEMPLATE_PACK = "bootstrap3to5"
 ```
