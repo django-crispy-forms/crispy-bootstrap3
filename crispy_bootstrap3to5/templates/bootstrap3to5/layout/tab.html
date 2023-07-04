@@ -1,6 +1,1 @@
-<ul{% if tabs.css_id %} id="{{ tabs.css_id }}"{% endif %} class="nav nav-tabs">
-    {{ links }}
-</ul>
-<div class="tab-content panel-body">
-    {{ content }}
-</div>
+{% if use_bootstrap5 %}{% include 'bootstrap3to5/layout/bootstrap5/tab.html' %}{% else %}{% include 'bootstrap3to5/layout/bootstrap3/tab.html' %}{% endif %}
