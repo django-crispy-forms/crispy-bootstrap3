@@ -1,0 +1,13 @@
+{% if inputs %}
+    <div class="mb-3{% if 'form-horizontal' in form_class %} row{% endif %}">
+        {% if label_class %}
+            <div class="aab {{ label_class }}"></div>
+        {% endif %}
+
+        <div class="{{ field_class }}">
+            {% for input in inputs %}
+                {% include "bootstrap3to5/layout/bootstrap5/baseinput.html" %}
+            {% endfor %}
+        </div>
+    </div>
+{% endif %}

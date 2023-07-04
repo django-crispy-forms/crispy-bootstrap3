@@ -1,13 +1,1 @@
-{% if inputs %}
-    <div class="form-group">
-        {% if label_class %}
-            <div class="aab controls {{ label_class }}"></div>
-        {% endif %}
-
-        <div class="controls {{ field_class }}">
-            {% for input in inputs %}
-                {% include "bootstrap3to5/layout/baseinput.html" %}
-            {% endfor %}
-        </div>
-    </div>
-{% endif %}
+{% if use_bootstrap5 %}{% include 'bootstrap3to5/bootstrap5/inputs.html' %}{% else %}{% include 'bootstrap3to5/bootstrap3/inputs.html' %}{% endif %}
