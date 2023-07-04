@@ -30,7 +30,7 @@
                     {% crispy_field field %}
                     {{ field.label }}{% if field.field.required %}<span class="asteriskField">*</span>{% endif %}
                 </label>
-                {% include 'bootstrap3to5/layout/bootstrap3/help_text_and_errors.html' %}
+                {% include 'bootstrap3to5/layout/help_text_and_errors.html' %}
             {% else %}
                 <div class="controls {{ field_class }}">
                     {% if field|is_multivalue %}
@@ -38,7 +38,7 @@
                     {% else %}
                         {% crispy_field field 'class' 'form-control' %}
                     {% endif %}
-                    {% include 'bootstrap3to5/layout/bootstrap3/help_text_and_errors.html' %}
+                    {% include 'bootstrap3to5/layout/help_text_and_errors.html' %}
                 </div>
             {% endif %}
         {% endif %}
