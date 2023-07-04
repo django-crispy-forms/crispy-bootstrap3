@@ -3,6 +3,8 @@
 {% if field.is_hidden %}
     {{ field }}
 {% else %}
+  IS FIELD TEST
+  {{ use_bootstrap5 }}
     {% if field|is_checkbox %}
         <div class="form-group">
         {% if label_class %}
