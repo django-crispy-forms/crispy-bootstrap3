@@ -1,9 +1,1 @@
-<div{% if formactions.flat_attrs %} {{ formactions.flat_attrs }}{% endif %} class="form-group {{ formactions.css_class }}"{% if formactions.id %} id="{{ formactions.id }}"{% endif %}>
-    {% if label_class %}
-        <div class="aab controls {{ label_class }}"></div>
-    {% endif %}
-
-    <div class="controls {{ field_class }}">
-        {{ fields_output }}
-    </div>
-</div>
+{% if use_bootstrap5 %}{% include 'bootstrap3to5/layout/bootstrap5/formactions.html' %}{% else %}{% include 'bootstrap3to5/layout/bootstrap3/formactions.html' %}{% endif %}
