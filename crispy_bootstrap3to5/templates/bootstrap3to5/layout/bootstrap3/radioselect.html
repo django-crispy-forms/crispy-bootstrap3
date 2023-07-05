@@ -10,7 +10,7 @@
 
       {% if not inline_class %}<div class="radio">{% endif %}
         <label for="{{ option.attrs.id }}" class="{% if inline_class %}radio-{{ inline_class }}{% endif %}">
-            <input type="radio" name="{{ field.html_name }}" value="{{ option.value|unlocalize }}" {% include "bootstrap3to5/layout/bootstrap3/attrs.html" with widget=option %}>
+            <input type="radio" name="{{ field.html_name }}" value="{{ option.value|unlocalize }}" {% include "bootstrap3to5/layout/attrs.html" with widget=option %}>
             {{ option.label|unlocalize }}
         </label>
       {% if not inline_class %}</div>{% endif %}
