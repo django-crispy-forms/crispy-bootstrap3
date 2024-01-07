@@ -1,3 +1,4 @@
+import django
 import pytest
 from crispy_forms import __version__
 from crispy_forms.bootstrap import Field, InlineCheckboxes
@@ -462,9 +463,15 @@ def test_layout_composition(settings):
     html = template.render(c)
 
     # Bootstrap 4 does not contain a multifield template
-    assert parse_html(html) == parse_expected(
-        "bootstrap3/test_layout/test_layout_composition.html"
-    )
+    if django.VERSION >= (5, 0):
+        # Added 'aria-describedby' for fields with help_text
+        # https://docs.djangoproject.com/en/5.0/releases/5.0/#forms
+        expected = parse_expected(
+            "bootstrap3/test_layout/test_layout_composition_gte50.html"
+        )
+    else:
+        expected = parse_expected("bootstrap3/test_layout/test_layout_composition.html")
+    assert parse_html(html) == expected
 
 
 @override_settings(CRISPY_CLASS_CONVERTERS=CONVERTERS)
@@ -516,10 +523,19 @@ def test_second_layout_multifield_column_buttonholder_submit_div(settings):
     html = template.render(c)
 
     # Bootstrap 4 does not contain a multifield template
-    assert parse_html(html) == parse_expected(
-        "bootstrap3/test_layout/"
-        "test_second_layout_multifield_column_buttonholder_submit_div.html"
-    )
+    if django.VERSION >= (5, 0):
+        # Added 'aria-describedby' for fields with help_text
+        # https://docs.djangoproject.com/en/5.0/releases/5.0/#forms
+        expected = parse_expected(
+            "bootstrap3/test_layout/"
+            "test_second_layout_multifield_column_buttonholder_submit_div_gte50.html"
+        )
+    else:
+        expected = parse_expected(
+            "bootstrap3/test_layout/"
+            "test_second_layout_multifield_column_buttonholder_submit_div.html"
+        )
+    assert parse_html(html) == expected
 
 
 @override_settings(
