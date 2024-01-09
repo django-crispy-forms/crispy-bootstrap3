@@ -35,6 +35,7 @@ from .forms import (
     SampleForm4,
     SampleForm5,
     SampleForm6,
+    SimpleCheckboxSampleForm,
 )
 from .test_settings import TEMPLATE_DIRS
 from .utils import contains_partial, parse_expected, parse_form
@@ -584,6 +585,19 @@ def test_multiple_checkboxes_bs3():
     assert parse_form(form) == parse_expected(
         "bootstrap3/test_layout/test_multiple_checkboxes.html"
     )
+
+
+def test_no_label_checkboxes_bs3():
+    form = SimpleCheckboxSampleForm()
+    form.helper = FormHelper()
+    # no form-control class when labels are rendered
+    html = render_crispy_form(form)
+    assert html.count("form-control") == 0
+    form.helper.form_show_labels = False
+    # no labels or form-control class when labels are hidden
+    html = render_crispy_form(form)
+    assert html.count("<label ") == 0
+    assert html.count("form-control") == 0
 
 
 @pytest.mark.skipif(__version__[0] == "1", reason="#1262 fixed required attributes.")

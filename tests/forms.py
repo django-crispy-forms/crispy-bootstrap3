@@ -82,6 +82,12 @@ class CheckboxesSampleForm(forms.Form):
     )
 
 
+class SimpleCheckboxSampleForm(forms.Form):
+    is_company = forms.CharField(
+        label="company", required=False, widget=forms.CheckboxInput()
+    )
+
+
 class SelectSampleForm(forms.Form):
     select = forms.ChoiceField(
         choices=((1, "Option one"), (2, "Option two"), (3, "Option three")),
