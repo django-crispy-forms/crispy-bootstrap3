@@ -1,3 +1,4 @@
+import django
 import pytest
 from crispy_forms import __version__
 from crispy_forms.bootstrap import (
@@ -162,7 +163,6 @@ def test_remove_labels():
 
 class TestBootstrapLayoutObjects:
     def test_custom_django_widget(self):
-
         # Make sure an inherited RadioSelect gets rendered as it
         form = SampleFormCustomWidgets()
         assert isinstance(form.fields["inline_radios"].widget, CustomRadioSelect)
@@ -191,9 +191,17 @@ class TestBootstrapLayoutObjects:
             AppendedText("password1", "#", css_class="input-lg"),
             PrependedText("password2", "$", css_class="input-sm"),
         )
-        assert parse_form(test_form) == parse_expected(
-            "bootstrap3/test_layout_objects/test_prepended_appended_text.html"
-        )
+        if django.VERSION >= (5, 0):
+            # Added 'aria-describedby' for fields with help_text
+            # https://docs.djangoproject.com/en/5.0/releases/5.0/#forms
+            expected = parse_expected(
+                "bootstrap3/test_layout_objects/test_prepended_appended_text_gte50.html"
+            )
+        else:
+            expected = parse_expected(
+                "bootstrap3/test_layout_objects/test_prepended_appended_text.html"
+            )
+        assert parse_form(test_form) == expected
 
     def test_inline_radios(self):
         test_form = CheckboxesSampleForm()
