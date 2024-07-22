@@ -1,5 +1,9 @@
 # CHANGELOG FOR CRISPY-BOOTSTRAP3
 
+## TBC
+
+* Fixed ignoring of `css_class` attribute in `accordion.html` and `accordion-group.html` templates.
+
 ## 2024.1
 
 * Updated supported versions:
