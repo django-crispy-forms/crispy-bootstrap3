@@ -210,6 +210,10 @@ class TestBootstrapLayoutObjects:
         html = render_crispy_form(test_form)
         assert html.count('radio-inline"') == 2
 
+    @pytest.mark.xfail(
+        __version__ < "2.3",
+        reason="Issue #1395 - AccordionGroup gets unexpected css_class 'active'",
+    )
     def test_accordion_and_accordiongroup(self):
         test_form = SampleForm()
         test_form.helper = FormHelper()
@@ -248,6 +252,25 @@ class TestBootstrapLayoutObjects:
             html.count('<div class="panel-group %s" id="super-accordion"' % classes)
             == 1
         )
+
+    @pytest.mark.xfail(
+        __version__ < "2.3",
+        reason="Issue #1395 - AccordionGroup gets unexpected css_class 'active'",
+    )
+    def test_accordion_group_css_class_is_applied(self):
+        classes = "one two three"
+        test_form = SampleForm()
+        test_form.helper = FormHelper()
+        test_form.helper.form_tag = False
+        test_form.helper.layout = Layout(
+            Accordion(
+                AccordionGroup("one", "first_name", css_class=classes),
+                AccordionGroup("two", "password1", "password2"),
+            )
+        )
+        html = render_crispy_form(test_form)
+
+        assert html.count('<div class="panel panel-default %s"' % classes) == 1
 
     def test_accordion_active_false_not_rendered(self):
         test_form = SampleForm()

@@ -1,4 +1,4 @@
-<div class="panel panel-default">
+<div class="panel panel-default{% if div.css_class %} {{ div.css_class }}{% endif %}">
     <div class="panel-heading">
         <h4 class="panel-title">
             <a class="accordion-toggle" data-toggle="collapse" data-parent="#{{ div.data_parent }}" href="#{{ div.css_id }}">{{ div.name }}</a>
