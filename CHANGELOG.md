@@ -2,7 +2,7 @@
 
 ## TBC
 
-* Fixed ignoring of `css_class` attribute in `accordion.html` and `accordion-group.html` templates.
+* Fixed ignoring of `css_class` attribute in `accordion.html`, `accordion-group.html` and `tab.html` templates.
 
 ## 2024.1
 

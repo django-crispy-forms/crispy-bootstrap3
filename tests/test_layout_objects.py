@@ -330,13 +330,14 @@ class TestBootstrapLayoutObjects:
                     css_class="first-tab-class active",
                 ),
                 Tab("two", "password1", "password2"),
+                css_class="custom-class",
             )
         )
         html = render_crispy_form(test_form)
 
         assert (
             html.count(
-                '<ul class="nav nav-tabs"> <li class="tab-pane active">'
+                '<ul class="nav nav-tabs custom-class"> <li class="tab-pane active">'
                 '<a href="#custom-name" data-toggle="tab">One</a></li>'
             )
             == 1
