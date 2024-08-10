@@ -210,6 +210,10 @@ class TestBootstrapLayoutObjects:
         html = render_crispy_form(test_form)
         assert html.count('radio-inline"') == 2
 
+    @pytest.mark.xfail(
+        __version__ < "2.3",
+        reason="Issue #1395 - AccordionGroup gets unexpected css_class 'active'",
+    )
     def test_accordion_and_accordiongroup(self):
         test_form = SampleForm()
         test_form.helper = FormHelper()
@@ -229,6 +233,44 @@ class TestBootstrapLayoutObjects:
         assert html.count('name="first_name"') == 1
         assert html.count('name="password1"') == 1
         assert html.count('name="password2"') == 1
+
+    def test_accordion_css_class_is_applied(self):
+        classes = "one two three"
+        test_form = SampleForm()
+        test_form.helper = FormHelper()
+        test_form.helper.form_tag = False
+        test_form.helper.layout = Layout(
+            Accordion(
+                AccordionGroup("one", "first_name"),
+                css_class=classes,
+                css_id="super-accordion",
+            )
+        )
+        html = render_crispy_form(test_form)
+
+        assert (
+            html.count('<div class="panel-group %s" id="super-accordion"' % classes)
+            == 1
+        )
+
+    @pytest.mark.xfail(
+        __version__ < "2.3",
+        reason="Issue #1395 - AccordionGroup gets unexpected css_class 'active'",
+    )
+    def test_accordion_group_css_class_is_applied(self):
+        classes = "one two three"
+        test_form = SampleForm()
+        test_form.helper = FormHelper()
+        test_form.helper.form_tag = False
+        test_form.helper.layout = Layout(
+            Accordion(
+                AccordionGroup("one", "first_name", css_class=classes),
+                AccordionGroup("two", "password1", "password2"),
+            )
+        )
+        html = render_crispy_form(test_form)
+
+        assert html.count('<div class="panel panel-default %s"' % classes) == 1
 
     def test_accordion_active_false_not_rendered(self):
         test_form = SampleForm()
@@ -288,13 +330,14 @@ class TestBootstrapLayoutObjects:
                     css_class="first-tab-class active",
                 ),
                 Tab("two", "password1", "password2"),
+                css_class="custom-class",
             )
         )
         html = render_crispy_form(test_form)
 
         assert (
             html.count(
-                '<ul class="nav nav-tabs"> <li class="tab-pane active">'
+                '<ul class="nav nav-tabs custom-class"> <li class="tab-pane active">'
                 '<a href="#custom-name" data-toggle="tab">One</a></li>'
             )
             == 1
