@@ -3,6 +3,9 @@
 ## TBC
 
 * Fixed ignoring of `css_class` attribute in `accordion.html`, `accordion-group.html` and `tab.html` templates.
+* Updated supported versions:
+  * Django 3.2, 4.2, 5.0 and 5.1.
+  * Python 3.8 to 3.12.
 
 ## 2024.1
 
