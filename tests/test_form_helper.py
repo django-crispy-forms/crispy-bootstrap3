@@ -139,6 +139,11 @@ def test_form_show_errors_non_field_errors():
             "bootstrap3/test_form_helper/"
             "test_form_show_errors_non_field_errors_true_lte40.html"
         )
+    elif django.VERSION >= (5, 2):
+        expected = parse_expected(
+            "bootstrap3/test_form_helper/"
+            "test_form_show_errors_non_field_errors_true_gte52.html"
+        )
     elif django.VERSION >= (5, 0):
         # Added 'aria-describedby' for fields with help_text
         # https://docs.djangoproject.com/en/5.0/releases/5.0/#forms
@@ -161,6 +166,11 @@ def test_form_show_errors_non_field_errors():
         expected = parse_expected(
             "bootstrap3/test_form_helper/"
             "test_form_show_errors_non_field_errors_false_lte40.html"
+        )
+    elif django.VERSION >= (5, 2):
+        expected = parse_expected(
+            "bootstrap3/test_form_helper/"
+            "test_form_show_errors_non_field_errors_false_gte52.html"
         )
     elif django.VERSION >= (5, 0):
         # Added 'aria-describedby' for fields with help_text
@@ -542,7 +552,11 @@ def test_bootstrap_form_show_errors_bs3():
     form.is_valid()
 
     form.helper.form_show_errors = True
-    if django.VERSION >= (5, 0):
+    if django.VERSION >= (5, 2):
+        expected = parse_expected(
+            "bootstrap3/test_form_helper/bootstrap_form_show_errors_bs3_true_gte52.html"
+        )
+    elif django.VERSION >= (5, 0):
         # Added 'aria-describedby' for fields with help_text
         # https://docs.djangoproject.com/en/5.0/releases/5.0/#forms
         expected = parse_expected(
@@ -555,7 +569,12 @@ def test_bootstrap_form_show_errors_bs3():
     assert parse_form(form) == expected
 
     form.helper.form_show_errors = False
-    if django.VERSION >= (5, 0):
+    if django.VERSION >= (5, 2):
+        expected = parse_expected(
+            "bootstrap3/test_form_helper/"
+            "bootstrap_form_show_errors_bs3_false_gte52.html"
+        )
+    elif django.VERSION >= (5, 0):
         # Added 'aria-describedby' for fields with help_text
         # https://docs.djangoproject.com/en/5.0/releases/5.0/#forms
         expected = parse_expected(
